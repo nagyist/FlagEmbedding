@@ -3,6 +3,7 @@
 - [Model List](#model-list)
 - [Usage](#usage)
 - [Fine-tuning](#fine-tune)
+- [Evaluate Script](#evaluate-script)
 - [Evaluation](#evaluation)
 - [Citation](#citation)
 
@@ -369,6 +370,17 @@ If you download reranker-v2-minicpm-layerwise, you can load it with the followin
     "AutoModelForCausalLM": "modeling_minicpm_reranker.LayerWiseMiniCPMForCausalLM"
   },
 ```
+
+## Evaluate Script
+
+```shell
+python evaluate.py \
+--input_path ./toy_finetune_data.jsonl \
+--metrics mrr recall ndcg map precision \
+--k_values 1 10 100
+```
+
+If you want to use another reranker, please replace `reranker = FlagReranker('BAAI/bge-reranker-v2-m3', cache_dir=cache_dir, use_fp16=use_fp16)` with your own reranker.
 
 ## Evaluation
 
